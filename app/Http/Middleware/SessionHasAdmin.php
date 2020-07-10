@@ -19,9 +19,9 @@ class SessionHasAdmin
             return $next($request);
         }else{
             if(session('alert')){
-                return redirect('admin/login')->with('alert','Username atau Password salah!!!');
+                return redirect('login/admin')->with('alert','Username atau Password salah!!!');
             }else{
-                return redirect('admin/login')->with('alert','Login Terlebih Dahulu');
+                return redirect('login/admin')->with('alert','Login Terlebih Dahulu');
             }
         }
     }

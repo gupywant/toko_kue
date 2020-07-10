@@ -22,7 +22,7 @@ class adminLoginController extends Controller{
     		if(Hash::check($request->password,$Admin->password)){
     			Session::put('admin',true);
     			Session::put('username',$request->username);
-    			Session::put('role',$Admin->type);
+                Session::put('id',$Admin->id_admin);
     			return redirect(route('admin.dashboard'));
     		}else{
     			return back()->with('alert','Username atau password salah');
