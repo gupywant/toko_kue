@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Kue;
+use App\Model\KueOrder;
 use App\Model\KueGambar;
 use App\Model\JenisKue;
 use File;
@@ -21,8 +22,72 @@ class kueController extends Controller
     	return view('admin.kueAdd',$data);
     }
 
+    public function kueEdit($id){
+        $data['id'] = $id;
+        $data['jenis'] = jenisKue::all();
+        $data['gambar'] = KueGambar::where('id_kue',$id)->get();
+        $data['kue'] = Kue::where('id_kue',$id)->first();
+        return view('admin.kueEdit',$data);
+    }
+
+    public function kueUpdate(Request $request,$id){
+        date_default_timezone_set("Asia/jakarta");
+
+        $date = Date('Y-m-d H:i:s');
+
+
+        $update = array(
+            "nama" => $request->nama,
+            "id_jenis" => $request->jenis,
+            "harga" => $request->harga,
+            "waktu_po" => $request->po,
+            "deskripsi" => $request->descriptions,
+            "updated_at" => $date
+        );
+        
+        Kue::where('id_kue',$id)->update($update);
+        $add = Kue::where('id_kue',$id)->first();
+
+        //add image
+        $allFile = $request->file('foto');
+        if(!empty($request->foto)){
+            foreach ($request->foto as $key => $data) {
+                $file = $allFile[$key];
+                //image check
+                $allowedMimeTypes = ['image/jpeg','image/gif','image/png','image/bmp','image/svg+xml'];
+                $contentType = $file->getClientMimeType();
+
+                if(! in_array($contentType, $allowedMimeTypes) ){
+                    return back()->with('alert','Upload Hanya gambar');
+                }
+
+                $path = public_path().'/filesdat/'.$add->id_kue;
+                if (!file_exists($path)) {
+                    File::makeDirectory($path, $mode = 0777, true, true);
+                }
+
+                $file->move($path,$file->getClientOriginalName());
+
+                $addImage = new KueGambar;
+                $addImage->id_kue = $add->id_kue;
+                $addImage->gambar = $file->getClientOriginalName();
+                $addImage->updated_at = $date;
+                $addImage->created_at = $date;
+                $addImage->save();
+            }
+        }
+
+        return back()->with('message','Kue berhasil diupdate');
+    }
+
+    public function gambarDelete($id){
+        KueGambar::where('id_gambar',$id)->delete();
+        return back()->with('message','Gambar berhasil dihapus');
+    }
+
     public function hapus($id){
     	KueGambar::where('id_kue',$id)->delete();
+        KueOrder::where('id_kue',$id)->delete();
     	Kue::where('id_kue',$id)->delete();
 
     	return back()->with('message','Kue berhasil dihapus');

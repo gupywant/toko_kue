@@ -41,8 +41,11 @@ Route::middleware('sessionHasAdmin')->prefix('admin')->group(function () {
 	//kue
 	Route::get('kueList',['as'=>'admin.kueList', 'uses'=>'kueController@kueList']);
 	Route::get('kueAdd',['as'=>'admin.kueAdd', 'uses'=>'kueController@kueAdd']);
+	Route::get('kueEdit/{id}',['as'=>'admin.kueEdit', 'uses'=>'kueController@kueEdit']);
+	Route::post('kueUpdate/{id}',['as'=>'admin.kueUpdate', 'uses'=>'kueController@kueUpdate']);
 	Route::post('kueTambah',['as'=>'admin.kueTambah', 'uses'=>'kueController@tambah']);
 	Route::get('kueHapus/{id}',['as'=>'admin.kueHapus', 'uses'=>'kueController@hapus']);
+	Route::get('gambarDelete/{id}',['as'=>'admin.gambarDelete', 'uses'=>'kueController@gambarDelete']);
 	Route::get('jenisList',['as'=>'admin.jenisList', 'uses'=>'kueController@jenisList']);
 	Route::post('jenisEdit\{id}',['as'=>'admin.jenisEdit', 'uses'=>'kueController@jenisEdit']);
 	Route::post('jenisTambah',['as'=>'admin.jenisTambah', 'uses'=>'kueController@jenisTambah']);
@@ -52,4 +55,9 @@ Route::middleware('sessionHasAdmin')->prefix('admin')->group(function () {
 	Route::get('orderSelesaiList',['as'=>'admin.orderSelesaiList', 'uses'=>'orderController@orderSelesaiList']);
 	Route::get('orderProsesList',['as'=>'admin.orderProsesList', 'uses'=>'orderController@orderProsesList']);
 	Route::get('orderHapus/{id}',['as'=>'admin.orderHapus', 'uses'=>'orderController@orderHapus']);
+});
+
+Route::middleware('sessionHasAdmin')->prefix('admin')->group(function () {
+
+
 });
