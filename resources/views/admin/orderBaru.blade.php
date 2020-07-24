@@ -52,6 +52,7 @@
 	                    <th scope="col" class="sort" data-sort="completion">Tanggal PO</th>
 	                    <th scope="col" class="sort" width="20%" data-sort="status">Kode Bayar</th>
 	                    <th scope="col">Total Bayar</th>
+	                    <th>Status Bayar</th>
 	                    <th scope="col">Aksi</th>
 	                  </tr>
 	                </thead>
@@ -122,6 +123,13 @@
 	                    </td>
 	                    <td>
 	                    	{{number_format($data->jumlah*$data->harga,0,'.',',')}}
+	                    </td>
+	                    <td>
+	                    	@if($data->status==0)
+	                    		<span class="badge badge-warning">Belum bayar</span>
+	                    	@else
+	                    		<span class="badge badge-success">Sudah Bayar</span>
+	                    	@endif
 	                    </td>
 	                    <td class="text-left">
 	                      <div class="dropdown">

@@ -9,7 +9,7 @@ class orderController extends Controller
 {
     public function orderBaruList(){
         $data['table'] = true;
-    	$data['order'] = KueOrder::select('kue.nama as nama_kue','kue.harga','kue.waktu_po','kue_order.*','user.*')->leftJoin('kue','kue.id_kue','kue_order.id_kue')->leftJoin('user','user.id_user','kue_order.id_user')->where('kue_order.status',1)->get();
+    	$data['order'] = KueOrder::select('kue.nama as nama_kue','kue.harga','kue.waktu_po','kue_order.*','user.*')->leftJoin('kue','kue.id_kue','kue_order.id_kue')->leftJoin('user','user.id_user','kue_order.id_user')->where('kue_order.status',"<=",1)->get();
     	return view('admin.orderBaru',$data);
     }
 

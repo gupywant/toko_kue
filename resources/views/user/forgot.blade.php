@@ -1,5 +1,4 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<title>User Login</title>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
@@ -151,35 +150,6 @@ input[type=text]:placeholder {
   color: #cccccc;
 }
 
-input[type=password] {
-  background-color: #f6f6f6;
-  border: none;
-  color: #0d0d0d;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  width: 85%;
-  border: 2px solid #f6f6f6;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-}
-
-input[type=password]:focus {
-  background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
-}
-
-input[type=password]:placeholder {
-  color: #cccccc;
-}
 
 
 /* ANIMATIONS */
@@ -299,9 +269,7 @@ input[type=password]:placeholder {
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
-
-
-              <!-- Card header -->
+     <!-- Card header -->
               <div class="card-header border-0">
                 <div class="row">
                   <div class="col-sm-12">
@@ -328,16 +296,15 @@ input[type=password]:placeholder {
     </div>
     <hr>
     <!-- Login Form -->
-    <form action="{{route('user.loged')}}" method="post">
+    <form action="{{route('user.reset')}}" method="post">
       {{csrf_field()}}
-      <input type="text" id="username" class="fadeIn second" name="username" placeholder="email">
-      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
+      <input type="submit" class="fadeIn fourth" value="Reset Password">
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="{{route('user.forgot')}}">Lupas Password?</a> |
+      <a class="underlineHover" href="{{route('user.login')}}">Login?</a> |
       <a class="underlineHover" href="{{route('user.register')}}">Daftar</a>
     </div>
 

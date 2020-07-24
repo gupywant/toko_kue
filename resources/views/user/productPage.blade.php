@@ -10,7 +10,11 @@
         <!--Grid column-->
         <div class="col-md-6 mb-4">
 
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" class="img-fluid" alt="">
+        @if(!empty($kue->gambar))
+          <img class="img-fluid" width="70%" src="{{URL::asset('/filesdat')}}/{{$kue->id_kue}}{{'/'.$kue->gambar}}">
+        @else
+          <img class="img-fluid" src="{{URL::asset('/filesdat/default/default_photo.png')}}">
+        @endif
 
         </div>
         <!--Grid column-->
@@ -22,36 +26,30 @@
           <div class="p-4">
 
             <div class="mb-3">
-              <a href="">
-                <span class="badge purple mr-1">Category 2</span>
-              </a>
-              <a href="">
-                <span class="badge blue mr-1">New</span>
-              </a>
-              <a href="">
-                <span class="badge red mr-1">Bestseller</span>
+              <a href="{{route('user.home')}}?kat={{$jenis->id_jenis}}">
+                <span class="badge purple mr-1">{{$jenis->nama}}</span>
               </a>
             </div>
 
             <p class="lead">
-              <span class="mr-1">
-                <del>$200</del>
-              </span>
-              <span>$100</span>
+              <span>Rp. {{number_format($kue->harga,0,',','.')}}/ PCS</span>
             </p>
 
-            <p class="lead font-weight-bold">Description</p>
+            <p class="lead font-weight-bold">Deskripsi</p>
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa
-              sint voluptatibus!
-              Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
+            <p>{!!$kue->deskripsi!!}</p>
 
-            <form class="d-flex justify-content-left">
+            <form method="post" class="d-flex justify-content-left" action="{{route('user.keranjang',$kue->id_kue)}}">
               <!-- Default input -->
-              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
-              <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
+              <input type="number" name="jumlah" value="1" aria-label="Search" class="form-control" style="width: 100px">
+              @if(Session::get('user'))
+              {{csrf_field()}}
+              <button class="btn btn-primary btn-md my-0 p" type="submit" >Add to cart
                 <i class="fas fa-shopping-cart ml-1"></i>
               </button>
+              @else
+              <a class="btn btn-primary btn-md my-0 p" target="_blank" href="{{route('user.login')}}" data-toggle="tooltip" title="Login Untuk Memesan!">Login Terlebih Dahulu <i class="fa fa-sign-in ml-1"></i></a>
+              @endif
 
             </form>
 
@@ -65,52 +63,17 @@
       <!--Grid row-->
 
       <hr>
-
-      <!--Grid row-->
-      <div class="row d-flex justify-content-center wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-md-6 text-center">
-
-          <h4 class="my-4 h4">Additional information</h4>
-
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
-            voluptates,
-            quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-
+      <h1>Galeri</h1>
       <!--Grid row-->
       <div class="row wow fadeIn">
-
+        @foreach($gambar as $data)
         <!--Grid column-->
         <div class="col-lg-4 col-md-12 mb-4">
 
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
+          <img src="{{URL::asset('/filesdat')}}/{{$kue->id_kue}}{{'/'.$data->gambar}}" width="70%" class="img-fluid" alt="">
 
         </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
+        @endforeach
       </div>
       <!--Grid row-->
 

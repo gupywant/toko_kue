@@ -1,5 +1,4 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<title>User Login</title>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
@@ -13,7 +12,6 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  height: 100vh;
 }
 
 a {
@@ -53,7 +51,7 @@ h2 {
   background: #fff;
   padding: 30px;
   width: 90%;
-  max-width: 450px;
+  max-width: 700px;
   position: relative;
   padding: 0px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
@@ -182,6 +180,7 @@ input[type=password]:placeholder {
 }
 
 
+
 /* ANIMATIONS */
 
 /* Simple CSS3 Fade-in-down Animation */
@@ -300,7 +299,6 @@ input[type=password]:placeholder {
   <div id="formContent">
     <!-- Tabs Titles -->
 
-
               <!-- Card header -->
               <div class="card-header border-0">
                 <div class="row">
@@ -328,17 +326,47 @@ input[type=password]:placeholder {
     </div>
     <hr>
     <!-- Login Form -->
-    <form action="{{route('user.loged')}}" method="post">
+    <form action="{{route('user.userRegister')}}" method="post">
       {{csrf_field()}}
-      <input type="text" id="username" class="fadeIn second" name="username" placeholder="email">
-      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <div class="row">
+        <div class="col-sm-6">
+          <input type="text" id="email" class="fadeIn second" name="username" placeholder="Email">
+        </div>
+        <div class="col-sm-6">
+          <input type="text" id="nama" class="fadeIn third" name="nama" placeholder="Nama">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+        </div>
+        <div class="col-sm-6">
+          <input type="text" id="alamat" class="fadeIn third" name="alamat" placeholder="Alamat">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <input type="text" id="kota" class="fadeIn third" name="kota" placeholder="Kota">
+        </div>
+        <div class="col-sm-6">
+          <input type="text" id="provinsi" class="fadeIn third" name="provinsi" placeholder="Provinsi">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <input type="text" id="kode_pos" class="fadeIn third" name="kode_pos" placeholder="kode pos">
+        </div>
+        <div class="col-sm-6">
+          <input type="text" id="no_tlp" class="fadeIn third" name="no_tlp" placeholder="No Tlp">
+        </div>
+      </div>
+      <hr>
+          <input type="submit" class="fadeIn fourth" value="Register">
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="{{route('user.forgot')}}">Lupas Password?</a> |
-      <a class="underlineHover" href="{{route('user.register')}}">Daftar</a>
+      <a class="underlineHover" href="{{route('user.login')}}">Login?</a>
     </div>
 
   </div>

@@ -206,7 +206,7 @@
                 @else
                   <img class="card-img-top" width="30%" src="{{URL::asset('/filesdat/default/default_photo.png')}}">
                 @endif
-                <a href="{{route('user.kue')}}">
+                <a href="{{route('user.kue',$data->id_kue)}}">
                   <div class="mask rgba-white-slight"></div>
                 </a>
               </div>

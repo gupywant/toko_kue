@@ -95,7 +95,7 @@
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
               <a class="nav-link" href="{{route('admin.orderBaruList')}}">
-                <i class="fa fa-calendar text-green"></i>
+                <i class="fa fa-shopping-cart text-green"></i>
                 <span class="nav-link-text">Order Baru</span>
               </a>
             </li>

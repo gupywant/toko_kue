@@ -43,30 +43,16 @@
         <div class="navbar-collapse-header">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="dashboard.html">
-                <img src="{{ URL::asset('/assets_admin/img/brand/blue.png')}}">
+              <a href="#">
+                Login
               </a>
             </div>
             <div class="col-6 collapse-close">
               <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
               </button>
             </div>
           </div>
         </div>
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a href="login.html" class="nav-link">
-              <span class="nav-link-inner--text">Login</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="register.html" class="nav-link">
-              <span class="nav-link-inner--text">Register</span>
-            </a>
-          </li>
-        </ul>
       </div>
     </div>
   </nav>
