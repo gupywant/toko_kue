@@ -42,6 +42,7 @@ class userHomeController extends Controller
         $data['kue'] = $kue;
         $data['gambar'] = KueGambar::where('id_kue',$id)->get();
         $data['jenis'] = JenisKue::where('id_jenis',$kue->id_jenis)->first();
+        $data['kueSejenis'] = Kue::selectRaw('kue.*,(select gambar from kue_gambar a where id_gambar = (select min(id_gambar) from kue_gambar where id_kue = kue.id_kue )) as gambar,jenis_kue.nama as nama_jenis')->leftJoin('jenis_kue','jenis_kue.id_jenis','=','kue.id_jenis')->where('kue.id_jenis',$kue->id_jenis)->limit(4)->get();
     	return view('user.productPage',$data);
     }
 

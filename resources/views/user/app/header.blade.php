@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Fathiya's Cake</title>
+  <link rel="icon" href="{{URL::asset('img/logo.jpeg')}}" type="image/png">
   <!-- Font Awesome -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -53,7 +54,7 @@
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="#" target="_blank">
+      <a class="navbar-brand waves-effect" href="{{route('user.home')}}">
         <strong class="blue-text">Fathiya's Cake</strong>
       </a>
 
@@ -92,12 +93,12 @@
           </li>
           @else
           <li class="nav-item">
-            <a href="{{route('user.login')}}" class="nav-link waves-effect" target="_blank">
+            <a data-toggle="modal" data-target="#loginModal" class="nav-link waves-effect">
               Login
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('user.register')}}" class="nav-link waves-effect" target="_blank">
+            <a data-toggle="modal" data-target="#registerModal" class="nav-link waves-effect" target="_blank">
               Daftar
             </a>
           </li>
@@ -150,4 +151,117 @@
         </div>
       </div>
     </div>
-  @endif
+  @else
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{route('user.loged')}}" method="post">
+      {{csrf_field()}}
+      <div class="modal-body">
+        <div class="form-group">
+        <label for="email">Email:</label>
+          <input type="email" required="" class="form-control" name="username" placeholder="Masukkan Email" id="email">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" required="" class="form-control" name="password" placeholder="Masukkan Password" id="pwd">
+        </div>
+        <div class="form-group">
+          <a class="nav-link waves-effect" href="{{route('user.forgot')}}">Lupa Password?</a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Daftar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{route('user.userRegister')}}" method="post">
+      {{csrf_field()}}
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="pwd">Email:</label>
+              <input required="" type="text" id="email" class="form-control" name="username" placeholder="Email">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input required="" type="password" id="password" class="form-control" name="password" placeholder="Password">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="pwd">Nama:</label>
+              <input required="" type="text" id="nama" class="form-control" name="nama" placeholder="Nama">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="pwd">Alamat:</label>
+              <input required="" type="text" id="alamat" class="form-control" name="alamat" placeholder="Alamat">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+             <label for="pwd">Kota:</label>
+              <input required="" type="text" id="kota" class="form-control" name="kota" placeholder="Kota">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="pwd">Provinsi:</label>
+              <input required="" type="text" id="provinsi" class="form-control" name="provinsi" placeholder="Provinsi">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="pwd">Kode Pos:</label>
+              <input required="" type="text" id="kode_pos" class="form-control" name="kode_pos" placeholder="kode pos">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="pwd">No Tlp:</label>
+              <input required="" type="text" id="no_tlp" class="form-control" name="no_tlp" placeholder="No Tlp">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Daftar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+@endif

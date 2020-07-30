@@ -304,8 +304,7 @@ input[type=text]:placeholder {
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="{{route('user.login')}}">Login?</a> |
-      <a class="underlineHover" href="{{route('user.register')}}">Daftar</a>
+      <a class="underlineHover" href="{{route('user.home')}}">Kembali Ketoko?</a>
     </div>
 
   </div>

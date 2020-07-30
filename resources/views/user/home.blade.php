@@ -1,5 +1,16 @@
 @extends('/user/app/app')
 @section('content')
+<style type="text/css">
+a:visited {
+  color: grey;
+}
+  a:hover {
+  color: hotpink;
+}
+a:active {
+  color: grey;
+}
+</style>
   <!--Carousel Wrapper-->
   <div id="carousel-example-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel">
 
@@ -8,6 +19,7 @@
       <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
       <li data-target="#carousel-example-1z" data-slide-to="1"></li>
       <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="3"></li>
     </ol>
     <!--/.Indicators-->
 
@@ -16,7 +28,7 @@
 
       <!--First slide-->
       <div class="carousel-item active">
-        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%282%29.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view" style="background-image: url('{{URL::asset('/img/banner/1.jpg')}}'); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
           <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
@@ -24,27 +36,17 @@
             <!-- Content -->
             <div class="text-center white-text mx-5 wow fadeIn">
               <h1 class="mb-4">
-                <strong>Learn Bootstrap 4 with MDB</strong>
+                <strong>Fathya's Cake</strong>
               </h1>
 
-              <p>
-                <strong>Best & free guide of responsive web design</strong>
-              </p>
-
-              <p class="mb-4 d-none d-md-block">
-                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                  written versions
-                  available. Create your own, stunning website.</strong>
-              </p>
-
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                free tutorial
+              <a href="#order" class="btn btn-outline-white btn-lg">Pesan Sekarang
                 <i class="fas fa-graduation-cap ml-2"></i>
               </a>
             </div>
             <!-- Content -->
 
           </div>
+
           <!-- Mask & flexbox options-->
 
         </div>
@@ -53,7 +55,7 @@
 
       <!--Second slide-->
       <div class="carousel-item">
-        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%283%29.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view" style="background-image: url('{{URL::asset('/img/banner/2.jpg')}}'); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
           <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
@@ -61,21 +63,10 @@
             <!-- Content -->
             <div class="text-center white-text mx-5 wow fadeIn">
               <h1 class="mb-4">
-                <strong>Learn Bootstrap 4 with MDB</strong>
+                <strong>Fathya's Cake</strong>
               </h1>
 
-              <p>
-                <strong>Best & free guide of responsive web design</strong>
-              </p>
-
-              <p class="mb-4 d-none d-md-block">
-                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                  written versions
-                  available. Create your own, stunning website.</strong>
-              </p>
-
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                free tutorial
+              <a href="#order" class="btn btn-outline-white btn-lg">Pesan Sekarang
                 <i class="fas fa-graduation-cap ml-2"></i>
               </a>
             </div>
@@ -88,9 +79,9 @@
       </div>
       <!--/Second slide-->
 
-      <!--Third slide-->
+      <!--Second slide-->
       <div class="carousel-item">
-        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view" style="background-image: url('{{URL::asset('/img/banner/3.jpg')}}'); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
           <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
@@ -98,21 +89,10 @@
             <!-- Content -->
             <div class="text-center white-text mx-5 wow fadeIn">
               <h1 class="mb-4">
-                <strong>Learn Bootstrap 4 with MDB</strong>
+                <strong>Fathya's Cake</strong>
               </h1>
 
-              <p>
-                <strong>Best & free guide of responsive web design</strong>
-              </p>
-
-              <p class="mb-4 d-none d-md-block">
-                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                  written versions
-                  available. Create your own, stunning website.</strong>
-              </p>
-
-              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                free tutorial
+              <a href="#order" class="btn btn-outline-white btn-lg">Pesan Sekarang
                 <i class="fas fa-graduation-cap ml-2"></i>
               </a>
             </div>
@@ -123,7 +103,33 @@
 
         </div>
       </div>
-      <!--/Third slide-->
+      <!--/Second slide-->
+
+      <!--Second slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('{{URL::asset('/img/banner/4.jpg')}}'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Fathya's Cake</strong>
+              </h1>
+
+              <a href="#order" class="btn btn-outline-white btn-lg">Pesan Sekarang
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Second slide-->
 
     </div>
     <!--/.Slides-->
@@ -144,7 +150,7 @@
 
   <!--Main layout-->
   <main>
-    <div class="container">
+    <div class="container" id="order">
 
       <!--Navbar-->
       <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
@@ -214,20 +220,13 @@
 
               <!--Card content-->
               <div class="card-body text-center">
-                <!--Category & Title-->
-                <a href="" class="grey-text">
-                  <h5>{{$data->nama}}</h5>
-                </a>
                 <h5>
                   <strong>
-                    <a href="" class="dark-grey-text">{{$data->nama}}
+                    <a href="{{route('user.kue',$data->id_kue)}}">{{$data->nama}}
                       {!!$data->waktu_po==0 ? '<span class="badge badge-pill success-color">Ready</span>' : '<span class="badge badge-pill danger-color">PO</span>' !!}
                     </a>
                   </strong>
                 </h5>
-                <h4 class="black-text">
-                  <del>Rp {{number_format(($data->harga*0.1)+$data->harga,0,'.',',')}}</del>
-                </h4>
                 <h4 class="font-weight-bold blue-text">
                   <strong>Rp {{number_format($data->harga,0,'.',',')}}</strong>
                 </h4>

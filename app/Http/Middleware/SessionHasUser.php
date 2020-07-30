@@ -19,9 +19,9 @@ class SessionHasUser
             return $next($request);
         }else{
             if(session('alert')){
-                return redirect('login/user')->with('alert','Username atau Password salah!!!');
+                return redirect('/')->with('status','Username atau Password salah!!!');
             }else{
-                return redirect('login/user')->with('alert','Login Terlebih Dahulu');
+                return redirect('/')->with('status','Login Terlebih Dahulu');
             }
         }
     }

@@ -8,7 +8,10 @@
     <!--/.Call to action-->
 
     <hr class="my-4">
-
+    <p>Kontak Kami : Jalan Kenangan blablaba - 081211654729</p>
+    <hr>
+    
+    Profil Toko : Fathiya’s cake berdiri blablabla 
     <!-- Social icons -->
     <div class="pb-4">
       <a href="https://www.facebook.com/mdbootstrap" target="_blank">

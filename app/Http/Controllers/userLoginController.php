@@ -22,12 +22,12 @@ class userLoginController extends Controller
    			Session::put('username',$find->username);
    			Session::put('id',$find->id_user);
 
-   			return redirect(route('user.home'));
+   			return back()->with('status','Anda Berhasil Login');;
    		}else{
-   			return back()->with('alert','Email atau password salah!');
+   			return back()->with('status','Email atau password salah!');
    		}
    	}else{
-   		return back()->with('alert','Email atau password salah!!');
+   		return back()->with('status','Email atau password salah!!');
    	}
    }
 
@@ -57,15 +57,15 @@ class userLoginController extends Controller
 	   		$new->updated_at = $date;
 	   		$new->save();
 
-	   		return back()->with('message','Silahkan Login');
+	   		return back()->with('status','Silahkan Login');
 	   	}else{
-	   		return back()->with('alert','Email sudah terdaftar');
+	   		return back()->with('status','Email sudah terdaftar');
 	   	}
    }
 
    public function logout(){
    		Session::flush();
-        return redirect(route('user.login'))->with('message','Logout Berhasil');
+        return back()->with('message','Logout Berhasil');
    }
 
    public function reset(Request $request){

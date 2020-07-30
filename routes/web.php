@@ -18,8 +18,6 @@ Route::get('/kue/{id}', ['as'=>'user.kue','uses'=>'userHomeController@productInd
 Route::post('/keranjang/{id}', ['as'=>'user.keranjang','uses'=>'userHomeController@checkoutIndex']);
 Route::get('/keranjang/{id}', ['as'=>'user.keranjangGet','uses'=>'userHomeController@checkoutIndexGet']);
 Route::get('/keranjang', ['as'=>'user.keranjangGET','uses'=>'userHomeController@checkoutIndexGet']);
-Route::post('/keranjangOut/{id}', ['as'=>'user.keranjangOut','uses'=>'userHomeController@checkoutProses']);
-Route::get('/orderUser', ['as'=>'user.orderUser','uses'=>'userHomeController@orderUser']);
 
 Route::get('/login/user', ['as'=>'user.login','uses'=>'userLoginController@index']);
 Route::get('/login/forgot', ['as'=>'user.forgot','uses'=>'userLoginController@forgot']);
@@ -29,9 +27,13 @@ Route::post('/login/userRegister', ['as'=>'user.userRegister','uses'=>'userLogin
 Route::post('/login/reset', ['as'=>'user.reset','uses'=>'userLoginController@reset']);
 Route::get('login/logout',['as'=>'user.logout', 'uses'=>'userLoginController@logout']);
 
-Route::get('/profile', ['as'=>'user.profile','uses'=>'userLoginController@profile']);
-Route::post('/updateProfile', ['as'=>'user.updateProfile','uses'=>'userLoginController@updateProfile']);
-Route::post('/passwordChange', ['as'=>'user.passwordChange','uses'=>'userLoginController@passwordChange']);
+Route::middleware('sessionHasUser')->group(function () {
+	Route::post('/keranjangOut/{id}', ['as'=>'user.keranjangOut','uses'=>'userHomeController@checkoutProses']);
+	Route::get('/orderUser', ['as'=>'user.orderUser','uses'=>'userHomeController@orderUser']);
+	Route::get('/profile', ['as'=>'user.profile','uses'=>'userLoginController@profile']);
+	Route::post('/updateProfile', ['as'=>'user.updateProfile','uses'=>'userLoginController@updateProfile']);
+	Route::post('/passwordChange', ['as'=>'user.passwordChange','uses'=>'userLoginController@passwordChange']);
+});
 
 Route::get('login/admin',['as'=>'login', 'uses'=>'adminLoginController@index']);
 Route::post('login/admin',['as'=>'loginCheck', 'uses'=>'adminLoginController@login']);
