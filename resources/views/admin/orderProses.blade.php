@@ -72,7 +72,7 @@
 					        </button>
 					      </div>
 					      <div class="modal-body">			        	
-					        <form action="{{route('admin.adminEdit',$data->id_order)}}" method="post">
+					        <form action="{{route('admin.statusUpdate',$data->id_order)}}" method="post">
 					        	{{csrf_field()}}
 					        	<div class="row">	        		
 						            <div class="col-lg-12">

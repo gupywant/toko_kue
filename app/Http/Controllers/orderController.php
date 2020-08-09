@@ -9,20 +9,20 @@ class orderController extends Controller
 {
     public function orderBaruList(){
         $data['table'] = true;
-    	$data['order'] = KueOrder::select('kue.nama as nama_kue','kue.harga','kue.waktu_po','kue_order.*','user.*')->leftJoin('kue','kue.id_kue','kue_order.id_kue')->leftJoin('user','user.id_user','kue_order.id_user')->where('kue_order.status',"<=",1)->get();
+    	$data['order'] = KueOrder::select('kue.nama as nama_kue','kue.harga','kue.waktu_po','kue_order.*','user.nama as nama')->leftJoin('kue','kue.id_kue','kue_order.id_kue')->leftJoin('user','user.id_user','kue_order.id_user')->where('kue_order.status',"<=",1)->orderBy('kue_order.created_at','desc')->get();
     	return view('admin.orderBaru',$data);
     }
 
     public function orderProsesList(){
         $data['table'] = true;
-    	$data['order'] = KueOrder::leftJoin('kue','kue.id_kue','kue_order.id_kue')->where('kue_order.status',2)->get();
+    	$data['order'] = KueOrder::select('kue.nama as nama_kue','kue.harga','kue.waktu_po','kue_order.*','user.*')->leftJoin('kue','kue.id_kue','kue_order.id_kue')->leftJoin('user','user.id_user','kue_order.id_user')->where('kue_order.status',2)->orderBy('kue_order.created_at','desc')->get();
     	return view('admin.orderProses',$data);
     }
 
     public function orderSelesaiList(){
         $data['table'] = true;
-    	$data['order'] = KueOrder::leftJoin('kue','kue.id_kue','kue_order.id_kue')->where('kue_order.status',3)->get();
-    	return view('admin.orderSelesai',$data);
+    	$data['order'] = KueOrder::select('kue.nama as nama_kue','kue.harga','kue.waktu_po','kue_order.*','user.*')->leftJoin('kue','kue.id_kue','kue_order.id_kue')->leftJoin('user','user.id_user','kue_order.id_user')->where('kue_order.status',3)->orderBy('kue_order.created_at','desc')->get();    	
+        return view('admin.orderSelesai',$data);
     }
 
     public function orderHapus($id){
