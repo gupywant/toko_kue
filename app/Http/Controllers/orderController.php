@@ -42,4 +42,9 @@ class orderController extends Controller
 
     	return back()->with('message','Status Berhasil diupdate');
     }
+
+    public function orderDetail($id){
+        $data['order'] = OrderDetail::selectRaw('*')->where('order_detail.id_order',$id)->leftJoin('kue','kue.id_kue','=','order_detail.id_kue')->get();
+        return view('admin.orderDetail',$data);
+    }
 }

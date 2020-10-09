@@ -77,6 +77,7 @@ Route::middleware('sessionHasAdmin')->prefix('admin')->group(function () {
 	Route::get('orderSelesaiList',['as'=>'admin.orderSelesaiList', 'uses'=>'orderController@orderSelesaiList']);
 	Route::get('orderProsesList',['as'=>'admin.orderProsesList', 'uses'=>'orderController@orderProsesList']);
 	Route::get('orderHapus/{id}',['as'=>'admin.orderHapus', 'uses'=>'orderController@orderHapus']);
+	Route::get('/orderDetail/{id}', ['as'=>'admin.orderDetail','uses'=>'orderController@orderDetail']);
 });
 
 Route::middleware('sessionHasAdmin')->prefix('admin')->group(function () {

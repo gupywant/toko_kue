@@ -144,8 +144,7 @@ class userHomeController extends Controller
         return view('user.order',$data);
     }
 
-    public function orderDetail(Request $request,$id){
-        $find = User::where('username',Session::get('username'))->first();
+    public function orderDetail($id){
         $data['order'] = OrderDetail::selectRaw('*')->where('order_detail.id_order',$id)->leftJoin('kue','kue.id_kue','=','order_detail.id_kue')->get();
         return view('user.orderDetail',$data);
     }

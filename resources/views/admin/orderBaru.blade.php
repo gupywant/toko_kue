@@ -140,6 +140,7 @@
 	                        	<a class="dropdown-item" data-toggle="modal" data-target="#Modal{{$key}}">
 							 	Update Status</a>
 	                          	<a class="dropdown-item" href="{{route('admin.orderHapus',$data->id_order)}}">Delete</a>
+	                          	<a class="dropdown-item" href="{{route('admin.orderDetail',$data->id_order)}}">Detail</a>
 	                        </div>
 	                      </div>
 	                    </td>
