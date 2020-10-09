@@ -31,7 +31,8 @@
                           <th>No VA</th>
                           <th>Harga</th>
                           <th>Jumlah</th>
-                          <th>Total</th>
+                          <th>Detail</th>
+                          <th>Waktu PO</th>
                           <th>Status</th>
                         </tr>
                       </thead>
@@ -40,9 +41,10 @@
                         <tr>
                           <td><a href="{{route('user.home')}}?kat={{$data->id_jenis}}" style="a:link {text-decoration: none;}">{{$data->nama}}</a></td>
                           <td>{{$data->kode}}</td>
-                          <td>{{number_format($data->harga),0,',','.'}}</td>
-                          <td>{{number_format($data->jumlah),0,'.',','}}</td>
-                          <td>{{number_format($data->harga*$data->jumlah),0,',','.'}}</td>
+                          <td>{{number_format($data->total),0,',','.'}}</td>
+                          <td align="center">{{number_format($data->jumlah),0,'.',','}}</td>
+                          <td><a href="{{route('user.orderDetail',$data->id_order)}}">Klick untuk Detail</a></td>
+                          <td align="center">{{$data->waktu}} Hari</td>
                           <td>
                             @if($data->status==0)
                               <span class="badge badge-warning">Belum bayar</span>
@@ -63,7 +65,8 @@
                           <th>No VA</th>
                           <th>Harga</th>
                           <th>Jumlah</th>
-                          <th>Total</th>
+                          <th>Detail</th>
+                          <th>Waktu PO</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -71,9 +74,10 @@
                         <tr>
                           <td><a href="{{route('user.home')}}?kat={{$data->id_jenis}}" style="a:link {text-decoration: none;}">{{$data->nama}}</a></td>
                           <td>{{$data->kode}}</td>
-                          <td>{{number_format($data->harga),0,',','.'}}</td>
-                          <td>{{number_format($data->jumlah),0,'.',','}}</td>
-                          <td>{{number_format($data->harga*$data->jumlah),0,',','.'}}</td>
+                          <td>{{number_format($data->total),0,',','.'}}</td>
+                          <td align="center">{{number_format($data->jumlah),0,'.',','}}</td>
+                          <td><a href="{{route('user.orderDetail',$data->id_order)}}">Klick untuk Detail</a></td>
+                          <td align="center">{{$data->waktu}} Hari</td>
                         </tr>
                         @endforeach
                       </tbody>
@@ -87,17 +91,19 @@
                           <th>No VA</th>
                           <th>Harga</th>
                           <th>Jumlah</th>
-                          <th>Total</th>
+                          <th>Detail</th>
+                          <th>Waktu PO</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($onproses as $data)
+                        @foreach($finish as $data)
                         <tr>
                           <td><a href="{{route('user.home')}}?kat={{$data->id_jenis}}" style="a:link {text-decoration: none;}">{{$data->nama}}</a></td>
                           <td>{{$data->kode}}</td>
-                          <td>{{number_format($data->harga),0,',','.'}}</td>
-                          <td>{{number_format($data->jumlah),0,'.',','}}</td>
-                          <td>{{number_format($data->harga*$data->jumlah),0,',','.'}}</td>
+                          <td>{{number_format($data->total),0,',','.'}}</td>
+                          <td align="center">{{number_format($data->jumlah),0,'.',','}}</td>
+                          <td><a href="{{route('user.orderDetail',$data->id_order)}}">Klick untuk Detail</a></td>
+                          <td align="center">{{$data->waktu}} Hari</td>
                         </tr>
                         @endforeach
                       </tbody>

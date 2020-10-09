@@ -82,6 +82,11 @@
         <!-- Right -->
         <ul class="navbar-nav nav-flex-icons">
           @if(Session::get('user'))
+          <li class="nav-item">
+            <a href="{{route('user.keranjangDetail')}}" class="nav-link waves-effect" style="margin-top: -2px"> Keranjang
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </a>
+          </li>
           <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="margin-left: 5px; margin-top: 5px">Akun
                 <span class="caret"></span></a>

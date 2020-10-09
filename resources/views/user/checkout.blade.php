@@ -11,15 +11,15 @@
       <div class="row">
 
         <!--Grid column-->
-        <div class="col-md-8 mb-4">
+        <div class="col-md-7 mb-4">
 
           <!--Card-->
           <div class="card">
 
             <!--Card content-->
-            <form class="card-body" action="{{route('user.keranjangOut',$kue->id_kue)}}" method="post">
+            <form class="card-body" action="{{route('user.keranjangOut')}}" method="post">
               {{csrf_field()}}
-              <input type="hidden" id="firstName" name="jumlah" value="{{$jumlah}}" class="form-control">
+              <input type="hidden" id="firstName" name="jumlah" value="{{-- $jumlah --}}" class="form-control">
               <!--Grid row-->
               <div class="row">
 
@@ -92,26 +92,32 @@
         <!--Grid column-->
 
         <!--Grid column-->
-        <div class="col-md-4 mb-4">
+        <div class="col-md-5 mb-4">
 
           <!-- Heading -->
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Order Anda</span>
-            <span class="badge badge-secondary badge-pill">{{$jumlah}}</span>
+            <span class="badge badge-secondary badge-pill">{{--$jumlah--}}</span>
           </h4>
-
+          @php 
+            $total = 0;
+          @endphp
           <!-- Cart -->
           <ul class="list-group mb-3 z-depth-1">
+            @foreach($keranjang as $data)
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
-                <h6 class="my-0">Nama Kue</h6>
-                <small class="text-muted">{{$kue->nama}}</small>
+                <h6 class="my-0">{{$data->nama}}</h6>
+                <small class="text-muted">Jumlah {{$data->jumlah}}</small>
+                <a href="{{route('user.keranjangDelete',$data->id_kue)}}" class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash"></i></a>
               </div>
-              <span class="text-muted">Rp {{number_format($kue->harga),0,',','.'}}</span>
+              <span class="text-muted">Rp {{number_format($data->harga),0,',','.'}}</span>
             </li>
+            @php $total += ($data->harga*$data->jumlah);  @endphp
+            @endforeach
             <li class="list-group-item d-flex justify-content-between">
               <span>Total</span>
-              <strong>Rp {{number_format($kue->harga*$jumlah),0,',','.'}}</strong>
+              <strong>Rp {{number_format($total),0,',','.'}}</strong>
             </li>
           </ul>
           <!-- Cart -->

@@ -28,8 +28,11 @@ Route::post('/login/reset', ['as'=>'user.reset','uses'=>'userLoginController@res
 Route::get('login/logout',['as'=>'user.logout', 'uses'=>'userLoginController@logout']);
 
 Route::middleware('sessionHasUser')->group(function () {
-	Route::post('/keranjangOut/{id}', ['as'=>'user.keranjangOut','uses'=>'userHomeController@checkoutProses']);
+	Route::post('/keranjangOut', ['as'=>'user.keranjangOut','uses'=>'userHomeController@checkoutProses']);
+	Route::get('/keranjangDetail', ['as'=>'user.keranjangDetail','uses'=>'userHomeController@checkoutDetail']);
+	Route::get('/keranjangDelete/{id}', ['as'=>'user.keranjangDelete','uses'=>'userHomeController@checkoutDelete']);
 	Route::get('/orderUser', ['as'=>'user.orderUser','uses'=>'userHomeController@orderUser']);
+	Route::get('/orderDetail/{id}', ['as'=>'user.orderDetail','uses'=>'userHomeController@orderDetail']);
 	Route::get('/profile', ['as'=>'user.profile','uses'=>'userLoginController@profile']);
 	Route::post('/updateProfile', ['as'=>'user.updateProfile','uses'=>'userLoginController@updateProfile']);
 	Route::post('/passwordChange', ['as'=>'user.passwordChange','uses'=>'userLoginController@passwordChange']);

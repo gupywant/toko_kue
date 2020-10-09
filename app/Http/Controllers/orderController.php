@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\KueOrder;
+use App\Model\OrderDetail;
 
 class orderController extends Controller
 {
@@ -26,6 +27,8 @@ class orderController extends Controller
     }
 
     public function orderHapus($id){
+
+        OrderDetail::where('id_order',$id)->delete();
     	KueOrder::where('id_order',$id)->delete();
 
     	return back()->with('message','Orderan Berhasil dihapus');
